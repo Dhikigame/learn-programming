@@ -9,3 +9,8 @@ textarea {
   width: 30%;
   height: 10em;
 }
+
+#alert {
+  color:#ff0000;
+  font-size: 2em;
+}

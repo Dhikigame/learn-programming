@@ -7,15 +7,15 @@
 </head>
 <body>
 <h1>チーム分け</h1>
-<ul id="alert"></ul>
+<!-- <div id="alert"></div> -->
 
 <form name="form1" onsubmit="chooseMember();return false;">
     <fieldset>
         <legend>参加者N人中、M人のチームに分ける</legend>
         <p><label>参加者一覧</label></p>
-        <textarea name="names" placeholder="改行区切りで名前を入力" required></textarea>
-        <p><label>チームあたりの人数<input type="number" name="num" min="1" value="1" required></label></p>
-
+        <textarea name="names" placeholder="改行区切りで名前を入力"></textarea>
+        <p><label>チーム数<input type="number" name="num" min="1" value="1" required></label></p>
+        <div id="alert"></div>
     </fieldset>
     <button type="submit" id="submit">実行</button>
 </form>

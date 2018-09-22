@@ -3,8 +3,11 @@
  */
 function chooseMember() {
   const form = document.form1;
+  //console.log(form);
   const names = form.names.value;
+  //console.log(names);
   const orig_list = names.split('\n');
+  //console.log(orig_list);
   let list = removeEmptyStringValueFromArray(orig_list);
 
   form.names.value = list.join('\n');
@@ -16,7 +19,7 @@ function chooseMember() {
 
     // 指定されたチーム数分だけ for で回す
     for (let i = 0; i < count; i++) {
-      let members = [];
+      let members = [];  
 
       for (let j = 0; j < group_array[i]; j++ ) {
         /**
@@ -50,9 +53,10 @@ function getGroupMembers(group_num, total) {
 
   for (let i = 0; i < group_num; i++ ) {
     groups.push(group_members);
-
+    //console.log(groups)
   }
   for (let i = 0; i < surplus; i++ ) {
+    
     groups[i] += 1;
   }
 
@@ -83,15 +87,18 @@ function removeEmptyStringValueFromArray(array) {
 function output(winners) {
   let elem = document.getElementById('js-list');
   elem.innerText = '';
+  let group_name = ['巨人','中日','阪神','ヤクルト','広島','横浜','ソフトバンク','西武','ロッテ','日本ハム','楽天','オリックス'];
+  //console.log(group_name[0]);
 
-  let ol = document.createElement('ol');
+  let ui = document.createElement('ui');
   for(let i = 0; i < winners.length; i++) {
     let li = document.createElement('li');
-    li.innerText = winners[i];
-    ol.appendChild(li);
+    li.innerText = group_name[i] + " : " + winners[i];
+    ui.appendChild(li);
   }
 
-  elem.appendChild(ol);
+  elem.appendChild(ui);
+  console.log(elem);
 }
 
 /**
@@ -122,6 +129,14 @@ function validation(list, count) {
   if (list.length < count) {
     let li = document.createElement('li');
     li.innerText = '適切なグループ数を入力してください';
+    alert.appendChild(li);
+
+    return false;
+  }
+
+  if (list.length == count) {
+    let li = document.createElement('li');
+    li.innerText = '参加者数とチーム数が同じです';
     alert.appendChild(li);
 
     return false;
